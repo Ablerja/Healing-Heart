@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>Heartbeat Analyzer</h1>
+  <p>Upload your heartbeat audio file (WAV/MP3) to get instant analysis.</p>
+
+  <form method="POST" enctype="multipart/form-data" class="card">
+    <input type="file" name="heartbeat" accept=".wav,.mp3" required>
+    <br><br>
+    <button type="submit">Analyze</button>
+  </form>
+
+  {% if result %}
+    <div class="card">
+      <h3>Result</h3>
+      <p>Status: <b>{{ result[0] }}</b></p>
+      <p>Confidence: {{ result[1] }}%</p>
+    </div>
+  {% endif %}
+{% endblock %}
